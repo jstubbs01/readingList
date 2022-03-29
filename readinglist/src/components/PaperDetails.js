@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { PaperContext } from '../contexts/PaperContext';
 
 const PaperDetails = ({ paper }) => {
-  const { removePaper } = useContext(PaperContext);
+  const { dispatch } = useContext(PaperContext);
   return (
-    <li onClick={() => removePaper(paper.id)}>
+    <li onClick={() => dispatch({type: 'REMOVE_PAPER', id: paper.id})}>
       <div className="title">{paper.title}</div>
       <div className="author">{paper.author}</div>
     </li>

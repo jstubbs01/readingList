@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import { PaperContext } from "../contexts/PaperContext";
 
 const PaperInputForm = () => {
-    const { addPaper } = useContext(PaperContext);
+    const { dispatch } = useContext(PaperContext);
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const reportSubmit = (e) => {
         e.preventDefault();
-        addPaper(title, author);
+        dispatch({type: 'ADD_PAPER', paper: {
+            title, author
+        }});
         setTitle('');
         setAuthor('');
     }
